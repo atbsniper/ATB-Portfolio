@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Aitsam Tariq Bajwa</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Audiowide&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Major+Mono+Display&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Font Assignments */
+        .font-heading { font-family: 'Orbitron', sans-serif; }
+        .font-logo { font-family: 'Audiowide', cursive; }
+        .font-body { font-family: 'Rajdhani', sans-serif; }
+        .font-exo { font-family: 'Exo 2', sans-serif; }
+        .font-fira { font-family: 'Fira Code', monospace; }
+        .font-terminal { font-family: 'Share Tech Mono', monospace; }
+        
+        /* Cyberpunk Theme */
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #000;
+            color: #cccccc;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px #ff1e1e, 0 0 10px #ff1e1e, 0 0 15px #ff1e1e;
+        }
+        
+        .cyberpunk-card {
+            background: rgba(17, 17, 17, 0.9);
+            border: 2px solid #ff1e1e;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cyberpunk-card:hover {
+            box-shadow: 0 0 30px rgba(255, 30, 30, 0.5);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        
+        .cyberpunk-btn {
+            background: transparent;
+            border: 2px solid #ff1e1e;
+            color: #ff1e1e;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .cyberpunk-btn:hover {
+            background: linear-gradient(45deg, #ff1e1e, #ff4b2b);
+            color: #111111;
+            box-shadow: 0 0 20px rgba(255, 30, 30, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .cyberpunk-nav {
+            background: rgba(17, 17, 17, 0.95);
+            border-bottom: 2px solid #ff1e1e;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cyberpunk-glow {
+            box-shadow: 0 0 20px rgba(255, 30, 30, 0.3);
+        }
+        
+        /* Glitch effect */
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        .glitch-text {
+            animation: glitch 0.3s infinite;
+        }
+        
+        /* Navbar animation */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff1e1e;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* NEON TECH LAB BACKGROUND */
+        .tech-lab-bg {
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Circuit Board Pattern */
+        .circuit-board {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(90deg, rgba(255,30,30,0.1) 1px, transparent 1px),
+                linear-gradient(rgba(255,30,30,0.1) 1px, transparent 1px),
+                radial-gradient(2px 2px at 20px 30px, rgba(255,30,30,0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,30,30,0.2), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,30,30,0.4), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,30,30,0.3), transparent);
+            background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px, 100px 100px, 100px 100px;
+            animation: circuit-pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes circuit-pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        /* 3D Hologram Grid */
+        .hologram-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(90deg, rgba(255,30,30,0.1) 1px, transparent 1px),
+                linear-gradient(rgba(255,30,30,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 20s linear infinite;
+        }
+        
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Cyberpunk City Skyline */
+        .city-skyline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background-image: 
+                linear-gradient(45deg, transparent 30%, rgba(255,30,30,0.1) 30%, rgba(255,30,30,0.1) 35%, transparent 35%),
+                linear-gradient(-45deg, transparent 30%, rgba(255,30,30,0.1) 30%, rgba(255,30,30,0.1) 35%, transparent 35%),
+                linear-gradient(45deg, transparent 60%, rgba(255,30,30,0.1) 60%, rgba(255,30,30,0.1) 65%, transparent 65%),
+                linear-gradient(-45deg, transparent 60%, rgba(255,30,30,0.1) 60%, rgba(255,30,30,0.1) 65%, transparent 65%),
+                linear-gradient(45deg, transparent 90%, rgba(255,30,30,0.1) 90%, rgba(255,30,30,0.1) 95%, transparent 95%),
+                linear-gradient(-45deg, transparent 90%, rgba(255,30,30,0.1) 90%, rgba(255,30,30,0.1) 95%, transparent 95%);
+            background-size: 200px 200px, 200px 200px, 150px 150px, 150px 150px, 100px 100px, 100px 100px;
+            animation: skyline-glow 8s ease-in-out infinite;
+        }
+        
+        @keyframes skyline-glow {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Scan Lines */
+        .scan-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 30, 30, 0.03) 2px,
+                rgba(255, 30, 30, 0.03) 4px
+            );
+            animation: scan 10s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100px); }
+        }
+        
+        /* Floating Particles */
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ff1e1e;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
+            50% { transform: translateY(-20px) scale(1.5); opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-100">
+    <!-- Neon Tech Lab Background Elements -->
+    <div class="fixed inset-0 pointer-events-none">
+        <div class="tech-lab-bg"></div>
+        <div class="circuit-board"></div>
+        <div class="hologram-grid"></div>
+        <div class="city-skyline"></div>
+        <div class="scan-lines"></div>
+        <div class="floating-particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 1s;"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 cyberpunk-nav" x-data="{ isOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-logo neon-text">ATB.exe</a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-red-500 transition-colors font-heading uppercase">HOME</a>
+                    <a href="projects.html" class="nav-link text-red-500 font-semibold neon-text font-heading uppercase">PROJECTS</a>
+                    <a href="contact.html" class="nav-link text-gray-300 hover:text-red-500 transition-colors font-heading uppercase">CONTACT</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button @click="isOpen = !isOpen" class="text-red-500">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div x-show="isOpen" x-transition class="md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 text-gray-300 hover:text-red-500 font-heading uppercase">HOME</a>
+                    <a href="projects.html" class="block px-3 py-2 text-red-500 font-semibold neon-text font-heading uppercase">PROJECTS</a>
+                    <a href="contact.html" class="block px-3 py-2 text-gray-300 hover:text-red-500 font-heading uppercase">CONTACT</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-32 pb-20 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 font-heading">
+                    <span class="neon-text glitch-text">DEPLOYED ASSETS</span>
+                </h1>
+                <p class="text-xl text-gray-200 max-w-3xl mx-auto font-body">
+                    A collection of my work showcasing expertise in cybersecurity, Web3, and full-stack development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="py-20 bg-black relative z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1: Blockchain-Based Academic Portal -->
+                <div class="cyberpunk-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4 cyberpunk-glow">
+                        <i data-lucide="link" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-red-500 font-heading uppercase">Blockchain-Based Academic Portal</h3>
+                    <p class="text-gray-300 mb-4 font-body text-sm">
+                        Final Year Project - A decentralized web application for student attendance and quiz records 
+                        using smart contracts on Base Testnet.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Solidity</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">React</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Firebase</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Web3.js</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Base Testnet</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/atbsniper" target="_blank" 
+                           class="flex-1 cyberpunk-btn py-2 px-4 rounded-lg text-center text-sm">
+                            <i data-lucide="github" class="w-4 h-4 inline mr-2"></i>CODE
+                        </a>
+                        <a href="#" class="flex-1 cyberpunk-btn py-2 px-4 rounded-lg text-center text-sm">
+                            <i data-lucide="external-link" class="w-4 h-4 inline mr-2"></i>VISIT SITE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Minimalist Job Application Tracker -->
+                <div class="cyberpunk-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4 cyberpunk-glow">
+                        <i data-lucide="briefcase" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-red-500 font-heading uppercase">Minimalist Job Application Tracker</h3>
+                    <p class="text-gray-300 mb-4 font-body text-sm">
+                        A full-stack web application to log job applications, track statuses, and manage your job search efficiently.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Next.js</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">React</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">PostgreSQL</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Vercel</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/atbsniper" target="_blank" 
+                           class="flex-1 cyberpunk-btn py-2 px-4 rounded-lg text-center text-sm">
+                            <i data-lucide="github" class="w-4 h-4 inline mr-2"></i>CODE
+                        </a>
+                        <a href="https://trackwithturtle.com" target="_blank" 
+                           class="flex-1 cyberpunk-btn py-2 px-4 rounded-lg text-center text-sm">
+                            <i data-lucide="external-link" class="w-4 h-4 inline mr-2"></i>VISIT SITE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Universal File Conversion Tool -->
+                <div class="cyberpunk-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4 cyberpunk-glow">
+                        <i data-lucide="file-text" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-red-500 font-heading uppercase">Universal File Conversion Tool</h3>
+                    <p class="text-gray-300 mb-4 font-body text-sm">
+                        A lightweight web app for compressing, previewing, and converting JPEG, PDF, Word files instantly.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">React</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Node.js</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Vercel</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Client Side</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/atbsniper" target="_blank" 
+                           class="flex-1 cyberpunk-btn py-2 px-4 rounded-lg text-center text-sm">
+                            <i data-lucide="github" class="w-4 h-4 inline mr-2"></i>CODE
+                        </a>
+                        <a href="https://ilovejpeg.com" target="_blank" 
+                           class="flex-1 cyberpunk-btn py-2 px-4 rounded-lg text-center text-sm">
+                            <i data-lucide="external-link" class="w-4 h-4 inline mr-2"></i>VISIT SITE
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: Digital Forensics Investigation -->
+                <div class="cyberpunk-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4 cyberpunk-glow">
+                        <i data-lucide="search" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-red-500 font-heading uppercase">Digital Forensics Investigation</h3>
+                    <p class="text-gray-300 mb-4 font-body text-sm">
+                        Conducted forensic analysis on an image using FTK Imager and Autopsy. Recovered deleted files and analyzed digital evidence.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">FTK Imager</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Autopsy</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Windows Forensics</span>
+                    </div>
+                </div>
+
+                <!-- Project 5: Fileless Malware Detection -->
+                <div class="cyberpunk-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4 cyberpunk-glow">
+                        <i data-lucide="shield" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-red-500 font-heading uppercase">Fileless Malware Detection</h3>
+                    <p class="text-gray-300 mb-4 font-body text-sm">
+                        Implemented a POC malware detection system based on the research paper "Near-Memory & In-Memory Detection of Fileless Malware".
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Python</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Memory Analysis</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Pattern Matching</span>
+                    </div>
+                </div>
+
+                <!-- Project 6: VSCode Extension -->
+                <div class="cyberpunk-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4 cyberpunk-glow">
+                        <i data-lucide="code" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-red-500 font-heading uppercase">VSCode Extension</h3>
+                    <p class="text-gray-300 mb-4 font-body text-sm">
+                        Developed a custom VSCode extension for v0 design elements integration within the VSCode environment.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">JavaScript</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">VSCode API</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">React</span>
+                        <span class="px-3 py-1 bg-red-600 rounded-full text-xs font-fira">Node.js</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/pluuto19/v0-ext-mockup" target="_blank" 
+                           class="flex-1 cyberpunk-btn py-2 px-4 rounded-lg text-center text-sm">
+                            <i data-lucide="github" class="w-4 h-4 inline mr-2"></i>CODE
+                        </a>
+                        <a href="https://github.com/pluuto19/v0-ext-mockup" target="_blank" 
+                           class="flex-1 cyberpunk-btn py-2 px-4 rounded-lg text-center text-sm">
+                            <i data-lucide="external-link" class="w-4 h-4 inline mr-2"></i>VISIT SITE
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-red-500 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-gray-400 font-body">
+                © 2024 ATB | Built with ❤️ using LEMP Stack
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init();
+        
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

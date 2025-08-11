@@ -1,0 +1,33 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Logs / cache
+logs/
+*.log
+.cache/
+cache/
+.phpunit.result.cache
+
+# Node / Frontend
+node_modules/
+npm-debug.log*
+yarn-error.log
+pnpm-lock.yaml
+
+# PHP / Composer
+vendor/
+composer.lock
+
+# Env / secrets
+.env
+.env.*
+.env.local
+chatbot.php
+
+# Misc
+*.bak
+*.tmp

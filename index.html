@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aitsam Tariq Bajwa | CyberSecurity & Full Stack Developer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Audiowide&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Major+Mono+Display&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Font Assignments */
+        .font-heading { font-family: 'Orbitron', sans-serif; }
+        .font-logo { font-family: 'Audiowide', cursive; }
+        .font-neuropol { font-family: 'Neuropol X', sans-serif; }
+        .font-cyberpunk { font-family: 'Cyberpunk', sans-serif; }
+        .font-body { font-family: 'Rajdhani', sans-serif; }
+        .font-exo { font-family: 'Exo 2', sans-serif; }
+        .font-fira { font-family: 'Fira Code', monospace; }
+        .font-terminal { font-family: 'Share Tech Mono', monospace; }
+        .font-major { font-family: 'Major Mono Display', monospace; }
+        
+        /* Cyberpunk Theme */
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: #000;
+            color: #cccccc;
+        }
+        
+        .cyberpunk-bg {
+            background: linear-gradient(135deg, #111111 0%, #1a0000 50%, #ff1e1e 100%);
+        }
+        
+        .cyberpunk-glow {
+            box-shadow: 0 0 20px rgba(255, 30, 30, 0.3);
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 5px #ff1e1e, 0 0 10px #ff1e1e, 0 0 15px #ff1e1e;
+        }
+        
+        .cyberpunk-card {
+            background: rgba(17, 17, 17, 0.9);
+            border: 2px solid #ff1e1e;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cyberpunk-card:hover {
+            box-shadow: 0 0 30px rgba(255, 30, 30, 0.5);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        
+        .cyberpunk-btn {
+            background: transparent;
+            border: 2px solid #ff1e1e;
+            color: #ff1e1e;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .cyberpunk-btn:hover {
+            background: linear-gradient(45deg, #ff1e1e, #ff4b2b);
+            color: #111111;
+            box-shadow: 0 0 20px rgba(255, 30, 30, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .cyberpunk-nav {
+            background: rgba(17, 17, 17, 0.95);
+            border-bottom: 2px solid #ff1e1e;
+            backdrop-filter: blur(10px);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #ff1e1e 0%, #ff4b2b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Animated background */
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animated-bg {
+            background: linear-gradient(-45deg, #111111, #1a0000, #ff1e1e, #ff4b2b);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        /* Starfield background */
+        .starfield {
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .starfield::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,30,30,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,30,30,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: sparkle 20s linear infinite;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+        
+        /* Terminal styling */
+        .cyberpunk-terminal {
+            background: #000;
+            border: 2px solid #ff1e1e;
+            box-shadow: 0 0 20px rgba(255, 30, 30, 0.3);
+        }
+        
+        .cyberpunk-terminal-header {
+            background: #111111;
+            border-bottom: 2px solid #ff1e1e;
+        }
+        
+        .terminal-text {
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        
+        .terminal-input {
+            background: transparent;
+            border: none;
+            color: #00ff00;
+            font-family: 'Share Tech Mono', monospace;
+        }
+        
+        .terminal-input:focus {
+            outline: none;
+        }
+        
+        /* Glitch effect */
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        .glitch-text {
+            animation: glitch 0.3s infinite;
+        }
+        
+        /* Particle effect */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff1e1e;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Navbar animation */
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ff1e1e;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-100">
+    <!-- Floating Particles -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="floating-particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="floating-particle" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="floating-particle" style="left: 30%; animation-delay: 4s;"></div>
+        <div class="floating-particle" style="left: 40%; animation-delay: 1s;"></div>
+        <div class="floating-particle" style="left: 50%; animation-delay: 3s;"></div>
+        <div class="floating-particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="floating-particle" style="left: 70%; animation-delay: 2s;"></div>
+        <div class="floating-particle" style="left: 80%; animation-delay: 4s;"></div>
+        <div class="floating-particle" style="left: 90%; animation-delay: 1s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 cyberpunk-nav" x-data="{ isOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <span class="text-2xl font-logo neon-text">ATB</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-red-500 font-semibold neon-text font-heading uppercase">HOME</a>
+                    <a href="projects.html" class="nav-link text-gray-300 hover:text-red-500 transition-colors font-heading uppercase">PROJECTS</a>
+                    <a href="contact.html" class="nav-link text-gray-300 hover:text-red-500 transition-colors font-heading uppercase">CONTACT</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button @click="isOpen = !isOpen" class="text-red-500">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div x-show="isOpen" x-transition class="md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 text-red-500 font-semibold neon-text font-heading uppercase">HOME</a>
+                    <a href="projects.html" class="block px-3 py-2 text-gray-300 hover:text-red-500 font-heading uppercase">PROJECTS</a>
+                    <a href="contact.html" class="block px-3 py-2 text-gray-300 hover:text-red-500 font-heading uppercase">CONTACT</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 starfield">
+        <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 font-heading">
+                    <span class="neon-text glitch-text">Aitsam Tariq Bajwa</span>
+                </h1>
+                <p class="text-2xl md:text-3xl text-gray-200 mb-8 font-exo">
+                    CyberSecurity & Full Stack Developer
+                </p>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-12 font-body">
+                    Cybersecurity, Web Development, and DevOps enthusiast with hands-on experience in digital forensics,
+                    cloud technologies, and building secure, scalable web applications.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="projects.html" class="cyberpunk-btn px-8 py-3 rounded-lg font-semibold">
+                        MY PROJECTS
+                    </a>
+                    <a href="contact.html" class="cyberpunk-btn px-8 py-3 rounded-lg font-semibold">
+                        GET IN TOUCH
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    <h2 class="text-4xl font-bold mb-8 neon-text font-heading uppercase">ABOUT ME</h2>
+                    <div class="space-y-6 text-lg text-gray-300 font-body">
+                        <p>
+                            I'm a BS Cyber Security student at FAST National University with expertise in blockchain, 
+                            artificial intelligence, cloud computing, and SIEM Solutions. My passion lies in building 
+                            secure, scalable applications and exploring cutting-edge technologies.
+                        </p>
+                        <p>
+                            Currently working as a DevOps Intern at Invone, I manage cloud instances and deploy 
+                            applications using Docker. I also have experience as a Software Engineering Intern at 
+                            Grayhat Developers, where I developed custom VSCode extensions.
+                        </p>
+                        <p>
+                            I hold Microsoft Azure Fundamentals certification and have completed ethical hacking 
+                            workshops. My focus is on creating innovative solutions that bridge traditional web 
+                            development with the decentralized future.
+                        </p>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left" data-aos-duration="1000">
+                    <div class="cyberpunk-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-6 neon-text font-heading uppercase">EDUCATION & EXPERIENCE</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-red-500 pl-4">
+                                <div class="font-semibold text-red-500 font-exo">BS Cyber Security</div>
+                                <div class="text-sm text-gray-400 font-body">FAST National University (2021-2025)</div>
+                                <div class="text-xs text-gray-500 font-fira">Blockchain, AI, Cloud Computing, SIEM Solutions</div>
+                            </div>
+                            <div class="border-l-4 border-red-500 pl-4">
+                                <div class="font-semibold text-red-500 font-exo">DevOps Intern</div>
+                                <div class="text-sm text-gray-400 font-body">Invone (Jul 2025 - Present)</div>
+                                <div class="text-xs text-gray-500 font-fira">AWS, Docker, Linux Administration</div>
+                            </div>
+                            <div class="border-l-4 border-red-500 pl-4">
+                                <div class="font-semibold text-red-500 font-exo">Software Engineering Intern</div>
+                                <div class="text-sm text-gray-400 font-body">Grayhat Developers (Jun 2024 - Aug 2024)</div>
+                                <div class="text-xs text-gray-500 font-fira">VSCode Extensions, React, Node.js</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-red-500">
+                            <h4 class="text-lg font-semibold mb-4 text-red-500 font-heading uppercase">CONNECT WITH ME</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/atbsniper" target="_blank"
+                                   class="w-10 h-10 bg-gray-700 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors cyberpunk-glow">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/aitsam-tariq-bajwa/" target="_blank"
+                                   class="w-10 h-10 bg-blue-600 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors cyberpunk-glow">
+                                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                                </a>
+                                <a href="https://instagram.com/atbsniper" target="_blank"
+                                   class="w-10 h-10 bg-pink-600 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors cyberpunk-glow">
+                                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 neon-text font-heading uppercase">TECH STACK</h2>
+                <p class="text-xl text-gray-300 font-body">Technologies I work with</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 cyberpunk-glow">
+                        <i data-lucide="shield" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-red-500 font-heading uppercase">Cybersecurity</h3>
+                    <p class="text-gray-400 font-body text-sm">Vulnerability Assessment, Reverse Engineering, Malware Analysis, Digital Forensics</p>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 cyberpunk-glow">
+                        <i data-lucide="link" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-red-500 font-heading uppercase">Web3 & Blockchain</h3>
+                    <p class="text-gray-400 font-body text-sm">Solidity, Smart Contracts, Ethereum, Web3.js, Base Testnet</p>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 cyberpunk-glow">
+                        <i data-lucide="code" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-red-500 font-heading uppercase">Full-Stack Development</h3>
+                    <p class="text-gray-400 font-body text-sm">React, Next.js, Node.js, Python, JavaScript, PostgreSQL</p>
+                </div>
+                
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 cyberpunk-glow">
+                        <i data-lucide="server" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-red-500 font-heading uppercase">Cloud & DevOps</h3>
+                    <p class="text-gray-400 font-body text-sm">AWS, Microsoft Azure, Docker, Vercel, GitHub, Linux</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Terminal Section -->
+    <section class="py-20 bg-black">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4 neon-text font-heading uppercase">INTERACTIVE TERMINAL</h2>
+                <p class="text-xl text-gray-300 font-body">Experience the power of command line magic! 🖥️</p>
+            </div>
+            
+            <!-- Terminal Window -->
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <div class="cyberpunk-terminal rounded-lg overflow-hidden">
+                    <!-- Terminal Header -->
+                    <div class="cyberpunk-terminal-header px-4 py-3 flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div class="text-gray-400 text-sm font-terminal">aitsam@portfolio:~</div>
+                    </div>
+                    
+                    <!-- Terminal Content -->
+                    <div class="p-4 font-terminal text-sm" x-data="terminal()">
+                        <div class="space-y-2" id="terminal-output">
+                            <div class="terminal-text">Welcome to Aitsam's Interactive Terminal!</div>
+                            <div class="text-gray-400">Type 'help' to see available commands.</div>
+                            <div class="text-gray-400">Type 'clear' to clear the terminal.</div>
+                            <div class="text-gray-400">Type 'exit' to close the terminal.</div>
+                            <div class="text-gray-400">&nbsp;</div>
+                        </div>
+                        
+                        <!-- Command Input -->
+                        <div class="flex items-center">
+                            <span class="terminal-text mr-2">aitsam@portfolio:~$</span>
+                            <input type="text" 
+                                   x-model="command" 
+                                   @keyup.enter="executeCommand()"
+                                   placeholder="Enter command..."
+                                   class="terminal-input flex-1"
+                                   :disabled="isProcessing">
+                            <div x-show="isProcessing" class="ml-2">
+                                <div class="animate-pulse terminal-text">█</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-red-500">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-gray-400 font-body">
+                © 2024 ATB | Built with ❤️ using LEMP Stack
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init();
+        
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Terminal functionality
+        function terminal() {
+            return {
+                command: '',
+                isProcessing: false,
+                commandHistory: [],
+                historyIndex: -1,
+                
+                executeCommand() {
+                    if (!this.command.trim() || this.isProcessing) return;
+                    
+                    const cmd = this.command.trim().toLowerCase();
+                    this.commandHistory.push(cmd);
+                    this.historyIndex = -1;
+                    
+                    // Add command to output
+                    this.addOutput(`<span class="terminal-text">aitsam@portfolio:~$</span> ${this.command}`, 'command');
+                    
+                    this.isProcessing = true;
+                    
+                    // Simulate processing delay
+                    setTimeout(() => {
+                        this.processCommand(cmd);
+                        this.isProcessing = false;
+                        this.command = '';
+                    }, 300);
+                },
+                
+                processCommand(cmd) {
+                    let output = '';
+                    
+                    switch(cmd) {
+                        case 'help':
+                            output = `
+                                <div class="text-yellow-400 font-bold">Available Commands:</div>
+                                <div class="grid grid-cols-2 gap-2 mt-2">
+                                    <div><span class="terminal-text">help</span> - Show this help</div>
+                                    <div><span class="text-blue-400">about</span> - About Aitsam</div>
+                                    <div><span class="text-purple-400">skills</span> - Technical skills</div>
+                                    <div><span class="text-yellow-400">projects</span> - Featured projects</div>
+                                    <div><span class="text-red-400">contact</span> - Contact info</div>
+                                    <div><span class="text-gray-400">clear</span> - Clear terminal</div>
+                                    <div><span class="text-gray-400">exit</span> - Exit terminal</div>
+                                </div>
+                            `;
+                            break;
+                            
+                        case 'about':
+                            output = `
+                                <div class="text-cyan-400 font-bold">About Aitsam Tariq Bajwa</div>
+                                <div class="mt-2">
+                                    <div>🎯 BS Cyber Security Student at FAST National University</div>
+                                    <div>📍 Based in Islamabad, Pakistan</div>
+                                    <div>💻 DevOps Intern at Invone (Jul 2025 - Present)</div>
+                                    <div>🔧 Software Engineering Intern at Grayhat Developers (Jun 2024 - Aug 2024)</div>
+                                    <div>🛡️ Microsoft Azure Fundamentals Certified</div>
+                                    <div>📚 Specializing in Blockchain, AI, Cloud Computing, SIEM Solutions</div>
+                                </div>
+                            `;
+                            break;
+                            
+                        case 'skills':
+                            output = `
+                                <div class="text-purple-400 font-bold">Technical Skills</div>
+                                <div class="mt-2">
+                                    <div><span class="terminal-text">Cybersecurity:</span> Vulnerability Assessment, Reverse Engineering, Malware Analysis, Digital Forensics</div>
+                                    <div><span class="text-blue-400">Web3:</span> Solidity, Smart Contracts, Ethereum, Web3.js, Base Testnet</div>
+                                    <div><span class="text-yellow-400">Programming:</span> Python, JavaScript, Solidity, HTML, CSS</div>
+                                    <div><span class="text-red-400">Full-Stack:</span> React, Next.js, Node.js, PostgreSQL, Vercel</div>
+                                    <div><span class="text-cyan-400">Cloud & DevOps:</span> AWS, Microsoft Azure, Docker, GitHub, Linux</div>
+                                    <div><span class="text-pink-400">Tools:</span> YARA, OWASP Security, FTK Imager, Autopsy</div>
+                                </div>
+                            `;
+                            break;
+                            
+                        case 'projects':
+                            output = `
+                                <div class="text-yellow-400 font-bold">Featured Projects</div>
+                                <div class="mt-2 space-y-2">
+                                    <div><span class="terminal-text">1.</span> Blockchain-Based Academic Portal (Final Year Project)</div>
+                                    <div class="text-gray-400 ml-4">Decentralized web app for student attendance and quiz records using smart contracts on Base Testnet</div>
+                                    <div><span class="terminal-text">2.</span> Minimalist Job Application Tracker</div>
+                                    <div class="text-gray-400 ml-4">Full-stack web application to log job applications and track statuses</div>
+                                    <div><span class="terminal-text">3.</span> Universal File Conversion Tool</div>
+                                    <div class="text-gray-400 ml-4">Lightweight web app for compressing, previewing, and converting files instantly</div>
+                                    <div><span class="terminal-text">4.</span> Digital Forensics Investigation Project</div>
+                                    <div class="text-gray-400 ml-4">Conducted forensic analysis using FTK Imager and Autopsy</div>
+                                    <div><span class="terminal-text">5.</span> Fileless Malware Detection using Near-Memory Processing</div>
+                                    <div class="text-gray-400 ml-4">POC malware detection system based on research paper implementation</div>
+                                </div>
+                            `;
+                            break;
+                            
+                        case 'contact':
+                            output = `
+                                <div class="text-red-400 font-bold">Contact Information</div>
+                                <div class="mt-2">
+                                    <div><span class="terminal-text">📧 Email:</span> aitasamtbajwa@gmail.com</div>
+                                    <div><span class="text-blue-400">📱 Phone:</span> +92 336 5862800</div>
+                                    <div><span class="text-blue-400">🐙 GitHub:</span> github.com/atbsniper</div>
+                                    <div><span class="text-cyan-400">💼 LinkedIn:</span> linkedin.com/in/aitsam-tariq-bajwa</div>
+                                    <div><span class="text-pink-400">📸 Instagram:</span> instagram.com/atbsniper</div>
+                                    <div><span class="text-yellow-400">📍 Location:</span> Islamabad, Pakistan</div>
+                                </div>
+                            `;
+                            break;
+                            
+                        case 'clear':
+                            document.getElementById('terminal-output').innerHTML = '';
+                            return;
+                            
+                        case 'exit':
+                            output = '<div class="text-red-400">Terminal session ended. Thanks for visiting!</div>';
+                            break;
+                            
+                        default:
+                            if (cmd.includes('help') || cmd.includes('about') || cmd.includes('skills') || 
+                                cmd.includes('projects') || cmd.includes('contact') || cmd.includes('clear') || 
+                                cmd.includes('exit')) {
+                                output = `<div class="text-yellow-400">Did you mean: ${this.getClosestCommand(cmd)}?</div>`;
+                            } else {
+                                output = `<div class="text-red-400">Command not found: ${cmd}</div><div class="text-gray-400">Type 'help' for available commands.</div>`;
+                            }
+                    }
+                    
+                    this.addOutput(output, 'output');
+                },
+                
+                getClosestCommand(cmd) {
+                    const commands = ['help', 'about', 'skills', 'projects', 'contact', 'clear', 'exit'];
+                    for (let command of commands) {
+                        if (command.includes(cmd) || cmd.includes(command)) {
+                            return command;
+                        }
+                    }
+                    return 'help';
+                },
+                
+                addOutput(content, type) {
+                    const outputDiv = document.getElementById('terminal-output');
+                    const newLine = document.createElement('div');
+                    newLine.innerHTML = content;
+                    newLine.className = type === 'command' ? 'mb-2' : 'mb-4';
+                    outputDiv.appendChild(newLine);
+                    outputDiv.scrollTop = outputDiv.scrollHeight;
+                },
+                
+                // Handle arrow keys for command history
+                handleKeydown(event) {
+                    if (event.key === 'ArrowUp') {
+                        event.preventDefault();
+                        if (this.historyIndex < this.commandHistory.length - 1) {
+                            this.historyIndex++;
+                            this.command = this.commandHistory[this.commandHistory.length - 1 - this.historyIndex];
+                        }
+                    } else if (event.key === 'ArrowDown') {
+                        event.preventDefault();
+                        if (this.historyIndex > 0) {
+                            this.historyIndex--;
+                            this.command = this.commandHistory[this.commandHistory.length - 1 - this.historyIndex];
+                        } else if (this.historyIndex === 0) {
+                            this.historyIndex = -1;
+                            this.command = '';
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
