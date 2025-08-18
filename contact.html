@@ -39,20 +39,67 @@
             color: #cccccc;
         }
         
-        .neon-text {
-            text-shadow: 0 0 5px #ff1e1e, 0 0 10px #ff1e1e, 0 0 15px #ff1e1e;
+        /* Structured Backgrounds */
+        .hero-bg {
+            background: linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0d0d0d 100%);
+            position: relative;
         }
         
+        .section-bg {
+            background: linear-gradient(135deg, #151515 0%, #0d0d0d 100%);
+        }
+        
+        .contact-bg {
+            background: linear-gradient(135deg, #0d0d0d 0%, #151515 100%);
+        }
+        
+        /* Enhanced Cards with Depth */
         .cyberpunk-card {
-            background: rgba(17, 17, 17, 0.9);
-            border: 2px solid #ff1e1e;
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
+            border: 1px solid rgba(255, 30, 30, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(255, 30, 30, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
         }
         
         .cyberpunk-card:hover {
-            box-shadow: 0 0 30px rgba(255, 30, 30, 0.5);
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
+            transform: translateY(-8px);
+            box-shadow: 
+                0 16px 48px rgba(0, 0, 0, 0.5),
+                0 8px 24px rgba(255, 30, 30, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Sleek Text Highlights Instead of Glow */
+        .sleek-text {
+            position: relative;
+            color: #ff1e1e;
+            font-weight: 700;
+        }
+        
+        .sleek-text::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff1e1e 0%, #ff4b2b 100%);
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(255, 30, 30, 0.3);
+        }
+        
+        /* Section Dividers */
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ff1e1e, transparent);
+            margin: 0 auto;
+            width: 80%;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(255, 30, 30, 0.3);
         }
         
         .cyberpunk-btn {
@@ -209,29 +256,111 @@
             }
         }
         
-        /* Chat styling */
+        /* Sleek Chat Styling - ChatGPT-like */
         .chat-container {
-            background: #000;
-            border: 2px solid #ff1e1e;
-            box-shadow: 0 0 20px rgba(255, 30, 30, 0.3);
+            background: linear-gradient(135deg, #1A1A1A 0%, #0F0F0F 100%);
+            border: 2px solid rgba(255, 30, 30, 0.3);
+            border-radius: 16px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(255, 30, 30, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
         }
         
         .chat-message {
-            background: rgba(17, 17, 17, 0.8);
-            border: 1px solid #ff1e1e;
-            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1.25rem;
+            animation: messageSlideIn 0.3s ease-out;
+            margin-bottom: 0.5rem;
+        }
+        
+        .chat-message.user {
+            flex-direction: row-reverse;
+        }
+        
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .message-avatar.user {
+            background: linear-gradient(135deg, #E50914, #CC0812);
+            color: white;
+        }
+        
+        .message-avatar.bot {
+            background: linear-gradient(135deg, #333, #555);
+            color: white;
+        }
+        
+        .message-bubble {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 1rem 1.25rem;
+            max-width: 75%;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .chat-message.user .message-bubble {
+            background: linear-gradient(135deg, rgba(229, 9, 20, 0.2), rgba(229, 9, 20, 0.1));
+            border-color: rgba(229, 9, 20, 0.3);
+            border-radius: 18px 18px 4px 18px;
+        }
+        
+        .chat-message.bot .message-bubble {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            border-radius: 18px 18px 18px 4px;
+        }
+        
+        .message-content {
+            color: #FFFFFF;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0;
         }
         
         .chat-input {
-            background: rgba(17, 17, 17, 0.9);
-            border: 2px solid #ff1e1e;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 30, 30, 0.3);
             color: #f5f5f5;
-            font-family: 'Share Tech Mono', monospace;
+            font-family: 'Inter', sans-serif;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
         
         .chat-input:focus {
             outline: none;
-            box-shadow: 0 0 10px rgba(255, 30, 30, 0.5);
+            border-color: #ff1e1e;
+            box-shadow: 0 0 0 3px rgba(255, 30, 30, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         /* Form styling */
@@ -249,14 +378,17 @@
         
         /* Typing animation */
         .typing-dots {
-            display: inline-block;
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
         }
         
         .typing-dots .dot {
+            width: 6px;
+            height: 6px;
+            background: #E50914;
+            border-radius: 50%;
             animation: typing 1.4s infinite;
-            display: inline-block;
-            font-size: 20px;
-            color: #ff1e1e;
         }
         
         .typing-dots .dot:nth-child(2) {
@@ -270,11 +402,11 @@
         @keyframes typing {
             0%, 60%, 100% {
                 opacity: 0.3;
-                transform: translateY(0);
+                transform: scale(0.8);
             }
             30% {
                 opacity: 1;
-                transform: translateY(-5px);
+                transform: scale(1.2);
             }
         }
     </style>
@@ -294,14 +426,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-2xl font-logo neon-text">ATB.exe</a>
+                    <a href="index.html" class="text-2xl font-logo text-red-500">ATB</a>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
                     <a href="index.html" class="nav-link text-gray-300 hover:text-red-500 transition-colors font-heading uppercase">HOME</a>
                     <a href="projects.html" class="nav-link text-gray-300 hover:text-red-500 transition-colors font-heading uppercase">PROJECTS</a>
-                    <a href="contact.html" class="nav-link text-red-500 font-semibold neon-text font-heading uppercase">CONTACT</a>
+                    <a href="contact.html" class="nav-link text-red-500 font-semibold sleek-text font-heading uppercase">CONTACT</a>
                 </div>
                 
                 <!-- Mobile Menu Button -->
@@ -317,35 +449,38 @@
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="index.html" class="block px-3 py-2 text-gray-300 hover:text-red-500 font-heading uppercase">HOME</a>
                     <a href="projects.html" class="block px-3 py-2 text-gray-300 hover:text-red-500 font-heading uppercase">PROJECTS</a>
-                    <a href="contact.html" class="block px-3 py-2 text-red-500 font-semibold neon-text font-heading uppercase">CONTACT</a>
+                    <a href="contact.html" class="block px-3 py-2 text-red-500 font-semibold sleek-text font-heading uppercase">CONTACT</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Header -->
-    <section class="pt-32 pb-20 relative z-10">
+    <section class="pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 hero-bg relative z-10">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <div data-aos="fade-up" data-aos-duration="1000">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 font-heading">
-                    <span class="neon-text glitch-text">ENCRYPTED COMMUNICATION HUB</span>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 font-heading">
+                    <span class="sleek-text">ENCRYPTED COMMUNICATION HUB</span>
                 </h1>
-                <p class="text-xl text-gray-200 max-w-3xl mx-auto font-body">
+                <p class="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto font-body px-4">
                     Get in touch with me for collaborations, opportunities, or just to say hello!
                 </p>
             </div>
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- Contact Section -->
-    <section class="py-20 bg-black relative z-10">
+    <section class="py-12 sm:py-16 lg:py-20 contact-bg relative z-10">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 
                 <!-- Contact Form -->
                 <div data-aos="fade-right" data-aos-duration="1000">
-                    <div class="cyberpunk-card rounded-2xl p-8">
-                        <h2 class="text-3xl font-bold mb-8 neon-text font-heading uppercase">SEND MESSAGE</h2>
+                    <div class="cyberpunk-card rounded-2xl p-4 sm:p-6 lg:p-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 sleek-text font-heading uppercase">SEND MESSAGE</h2>
                         <form id="contactForm" class="space-y-6">
                             <div>
                                 <label class="block text-red-500 font-semibold mb-2 font-heading uppercase">NAME</label>
@@ -387,37 +522,39 @@
                 
                 <!-- AI Chatbot -->
                 <div data-aos="fade-left" data-aos-duration="1000">
-                    <div class="cyberpunk-card rounded-2xl p-8 h-full">
-                        <h2 class="text-3xl font-bold mb-8 neon-text font-heading uppercase">ATB-X</h2>
-                        <p class="text-red-500 font-bold mb-2 font-heading uppercase glitch-text">You've Been Warned… Now Talk to It</p>
-                        <p class="text-gray-300 mb-6 font-body">
+                    <div class="cyberpunk-card rounded-2xl p-4 sm:p-6 lg:p-8 h-full">
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 sleek-text font-heading uppercase">ATB-X</h2>
+                        <p class="text-red-500 font-bold mb-2 font-heading uppercase glitch-text text-sm sm:text-base">You've Been Warned… Now Talk to It</p>
+                        <p class="text-gray-300 mb-6 font-body text-sm sm:text-base">
                             Chat with my AI assistant - The Court Jester of Lord ATB! Ask questions, get help, or just have a conversation.
                         </p>
                         
-                        <div class="chat-container rounded-lg flex-1 flex flex-col" style="height: 500px;" x-data="chatbot()">
+                        <div class="chat-container rounded-lg flex-1 flex flex-col min-h-[400px]" x-data="chatbot()">
                             <!-- Chat Messages -->
-                            <div class="flex-1 p-4 overflow-y-auto space-y-4" id="chatMessages">
-                                <div class="chat-message p-3">
-                                    <div class="text-red-500 font-semibold mb-1 font-heading uppercase">Court Jester:</div>
-                                    <div class="text-gray-300 font-body text-sm">
-                                        Greetings, mortal! I am The Court Jester of Lord ATB, here to serve and entertain. What knowledge do you seek today? 🎭
+                            <div class="flex-1 p-4 overflow-y-auto space-y-4 min-h-[300px]" id="chatMessages">
+                                <div class="chat-message bot">
+                                    <div class="message-avatar bot">🎭</div>
+                                    <div class="message-bubble">
+                                        <div class="message-content">
+                                            Greetings, mortal! I am The Court Jester of Lord ATB, here to serve and entertain. What knowledge do you seek today?
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Chat Input -->
-                            <div class="p-4 border-t border-red-500">
+                            <div class="p-4 border-t border-red-500 bg-black bg-opacity-20">
                                 <div class="flex space-x-2">
                                     <input type="text" 
                                            x-model="message" 
                                            @keyup.enter="sendMessage()"
                                            placeholder="Type your message..."
-                                           class="chat-input flex-1 px-3 py-2 rounded-lg"
+                                           class="chat-input flex-1 px-4 py-3 rounded-lg text-base"
                                            :disabled="isTyping">
                                     <button @click="sendMessage()" 
                                             :disabled="isTyping || !message.trim()"
-                                            class="cyberpunk-btn px-4 py-2 rounded-lg">
-                                        <i data-lucide="send" class="w-4 h-4"></i>
+                                            class="cyberpunk-btn px-6 py-3 rounded-lg">
+                                        <i data-lucide="send" class="w-5 h-5"></i>
                                     </button>
                                 </div>
                             </div>
@@ -429,15 +566,18 @@
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- Contact Info Section -->
-    <section class="py-20 bg-black relative z-10">
+    <section class="py-12 sm:py-16 lg:py-20 section-bg relative z-10">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 neon-text font-heading uppercase">GET IN TOUCH</h2>
-                <p class="text-xl text-gray-300 font-body">Multiple ways to reach me</p>
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 sleek-text font-heading uppercase">GET IN TOUCH</h2>
+                <p class="text-lg sm:text-xl text-gray-300 font-body">Multiple ways to reach me</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 <div class="text-center" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 cyberpunk-glow">
                         <i data-lucide="mail" class="w-8 h-8"></i>
@@ -547,17 +687,28 @@
                     const chatMessages = document.getElementById('chatMessages');
                     const typingDiv = document.createElement('div');
                     typingDiv.id = 'typing-indicator';
-                    typingDiv.className = 'chat-message p-3';
-                    typingDiv.innerHTML = `
-                        <div class="text-red-500 font-semibold mb-1 font-heading uppercase">Court Jester:</div>
-                        <div class="text-gray-300 font-body text-sm">
-                            <span class="typing-dots">
-                                <span class="dot">.</span>
-                                <span class="dot">.</span>
-                                <span class="dot">.</span>
-                            </span>
-                        </div>
+                    typingDiv.className = 'chat-message bot';
+                    
+                    const avatar = document.createElement('div');
+                    avatar.className = 'message-avatar bot';
+                    avatar.textContent = '🎭';
+                    
+                    const bubble = document.createElement('div');
+                    bubble.className = 'message-bubble';
+                    
+                    const content = document.createElement('div');
+                    content.className = 'message-content';
+                    content.innerHTML = `
+                        <span class="typing-dots">
+                            <span class="dot">.</span>
+                            <span class="dot">.</span>
+                            <span class="dot">.</span>
+                        </span>
                     `;
+                    
+                    bubble.appendChild(content);
+                    typingDiv.appendChild(avatar);
+                    typingDiv.appendChild(bubble);
                     chatMessages.appendChild(typingDiv);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 },
@@ -572,18 +723,22 @@
                 addMessage(sender, text, type) {
                     const chatMessages = document.getElementById('chatMessages');
                     const messageDiv = document.createElement('div');
-                    messageDiv.className = 'chat-message p-3';
+                    messageDiv.className = `chat-message ${type}`;
                     
-                    const senderDiv = document.createElement('div');
-                    senderDiv.className = type === 'user' ? 'text-blue-400 font-semibold mb-1 font-heading uppercase' : 'text-red-500 font-semibold mb-1 font-heading uppercase';
-                    senderDiv.textContent = sender + ':';
+                    const avatar = document.createElement('div');
+                    avatar.className = `message-avatar ${type}`;
+                    avatar.textContent = type === 'user' ? '👤' : '🎭';
                     
-                    const textDiv = document.createElement('div');
-                    textDiv.className = 'text-gray-300 font-body text-sm';
-                    textDiv.textContent = text;
+                    const bubble = document.createElement('div');
+                    bubble.className = 'message-bubble';
                     
-                    messageDiv.appendChild(senderDiv);
-                    messageDiv.appendChild(textDiv);
+                    const content = document.createElement('div');
+                    content.className = 'message-content';
+                    content.textContent = text;
+                    
+                    bubble.appendChild(content);
+                    messageDiv.appendChild(avatar);
+                    messageDiv.appendChild(bubble);
                     chatMessages.appendChild(messageDiv);
                     
                     // Scroll to bottom
@@ -593,28 +748,32 @@
                 typeMessage(sender, text, type) {
                     const chatMessages = document.getElementById('chatMessages');
                     const messageDiv = document.createElement('div');
-                    messageDiv.className = 'chat-message p-3';
+                    messageDiv.className = `chat-message ${type}`;
 
-                    const senderDiv = document.createElement('div');
-                    senderDiv.className = type === 'user' ? 'text-blue-400 font-semibold mb-1 font-heading uppercase' : 'text-red-500 font-semibold mb-1 font-heading uppercase';
-                    senderDiv.textContent = sender + ':';
+                    const avatar = document.createElement('div');
+                    avatar.className = `message-avatar ${type}`;
+                    avatar.textContent = type === 'user' ? '👤' : '🎭';
 
-                    const textDiv = document.createElement('div');
-                    textDiv.className = 'text-gray-300 font-body text-sm';
+                    const bubble = document.createElement('div');
+                    bubble.className = 'message-bubble';
+
+                    const content = document.createElement('div');
+                    content.className = 'message-content';
 
                     let currentText = '';
                     const interval = setInterval(() => {
                         if (currentText.length < text.length) {
                             currentText += text[currentText.length];
-                            textDiv.textContent = currentText;
+                            content.textContent = currentText;
                         } else {
                             clearInterval(interval);
                             this.isTyping = false; // Ensure typing is off after completion
                         }
                     }, 50); // Typing speed (adjust as needed)
 
-                    messageDiv.appendChild(senderDiv);
-                    messageDiv.appendChild(textDiv);
+                    bubble.appendChild(content);
+                    messageDiv.appendChild(avatar);
+                    messageDiv.appendChild(bubble);
                     chatMessages.appendChild(messageDiv);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }

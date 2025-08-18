@@ -39,20 +39,67 @@
             color: #cccccc;
         }
         
-        .neon-text {
-            text-shadow: 0 0 5px #ff1e1e, 0 0 10px #ff1e1e, 0 0 15px #ff1e1e;
+        /* Structured Backgrounds */
+        .hero-bg {
+            background: linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
+            position: relative;
         }
         
+        .section-bg {
+            background: linear-gradient(135deg, #151515 0%, #0d0d0d 100%);
+        }
+        
+        .projects-bg {
+            background: linear-gradient(135deg, #0d0d0d 0%, #151515 100%);
+        }
+        
+        /* Enhanced Cards with Depth */
         .cyberpunk-card {
-            background: rgba(17, 17, 17, 0.9);
-            border: 2px solid #ff1e1e;
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
+            border: 1px solid rgba(255, 30, 30, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(255, 30, 30, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
         }
         
         .cyberpunk-card:hover {
-            box-shadow: 0 0 30px rgba(255, 30, 30, 0.5);
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
+            transform: translateY(-8px);
+            box-shadow: 
+                0 16px 48px rgba(0, 0, 0, 0.5),
+                0 8px 24px rgba(255, 30, 30, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Sleek Text Highlights Instead of Glow */
+        .sleek-text {
+            position: relative;
+            color: #ff1e1e;
+            font-weight: 700;
+        }
+        
+        .sleek-text::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff1e1e 0%, #ff4b2b 100%);
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(255, 30, 30, 0.3);
+        }
+        
+        /* Section Dividers */
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ff1e1e, transparent);
+            margin: 0 auto;
+            width: 80%;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(255, 30, 30, 0.3);
         }
         
         .cyberpunk-btn {
@@ -262,13 +309,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="index.html" class="text-2xl font-logo neon-text">ATB.exe</a>
+                    <a href="index.html" class="text-2xl font-logo text-red-500">ATB</a>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
                     <a href="index.html" class="nav-link text-gray-300 hover:text-red-500 transition-colors font-heading uppercase">HOME</a>
-                    <a href="projects.html" class="nav-link text-red-500 font-semibold neon-text font-heading uppercase">PROJECTS</a>
+                    <a href="projects.html" class="nav-link text-red-500 font-semibold sleek-text font-heading uppercase">PROJECTS</a>
                     <a href="contact.html" class="nav-link text-gray-300 hover:text-red-500 transition-colors font-heading uppercase">CONTACT</a>
                 </div>
                 
@@ -284,7 +331,7 @@
             <div x-show="isOpen" x-transition class="md:hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="index.html" class="block px-3 py-2 text-gray-300 hover:text-red-500 font-heading uppercase">HOME</a>
-                    <a href="projects.html" class="block px-3 py-2 text-red-500 font-semibold neon-text font-heading uppercase">PROJECTS</a>
+                    <a href="projects.html" class="block px-3 py-2 text-red-500 font-semibold sleek-text font-heading uppercase">PROJECTS</a>
                     <a href="contact.html" class="block px-3 py-2 text-gray-300 hover:text-red-500 font-heading uppercase">CONTACT</a>
                 </div>
             </div>
@@ -292,11 +339,11 @@
     </nav>
 
     <!-- Header -->
-    <section class="pt-32 pb-20 relative z-10">
+    <section class="pt-32 pb-20 hero-bg relative z-10">
         <div class="max-w-6xl mx-auto px-4 text-center">
             <div data-aos="fade-up" data-aos-duration="1000">
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 font-heading">
-                    <span class="neon-text glitch-text">DEPLOYED ASSETS</span>
+                    <span class="sleek-text">DEPLOYED ASSETS</span>
                 </h1>
                 <p class="text-xl text-gray-200 max-w-3xl mx-auto font-body">
                     A collection of my work showcasing expertise in cybersecurity, Web3, and full-stack development.
@@ -305,8 +352,11 @@
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- Projects Grid -->
-    <section class="py-20 bg-black relative z-10">
+    <section class="py-20 projects-bg relative z-10">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
@@ -332,7 +382,8 @@
                            class="flex-1 cyberpunk-btn py-2 px-4 rounded-lg text-center text-sm">
                             <i data-lucide="github" class="w-4 h-4 inline mr-2"></i>CODE
                         </a>
-                        <a href="#" class="flex-1 cyberpunk-btn py-2 px-4 rounded-lg text-center text-sm">
+                        <a href="https://oneblock-studentportal.vercel.app/" target="_blank" 
+                           class="flex-1 cyberpunk-btn py-2 px-4 rounded-lg text-center text-sm">
                             <i data-lucide="external-link" class="w-4 h-4 inline mr-2"></i>VISIT SITE
                         </a>
                     </div>

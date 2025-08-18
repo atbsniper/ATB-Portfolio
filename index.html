@@ -35,81 +35,112 @@
         .font-terminal { font-family: 'Share Tech Mono', monospace; }
         .font-major { font-family: 'Major Mono Display', monospace; }
         
-        /* Cyberpunk Theme */
+        /* Enhanced Cyberpunk Theme with Depth */
         body {
             font-family: 'Rajdhani', sans-serif;
             background: #000;
             color: #cccccc;
         }
         
-        .cyberpunk-bg {
-            background: linear-gradient(135deg, #111111 0%, #1a0000 50%, #ff1e1e 100%);
+        /* Structured Backgrounds */
+        .hero-bg {
+            background: linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
+            position: relative;
         }
         
-        .cyberpunk-glow {
-            box-shadow: 0 0 20px rgba(255, 30, 30, 0.3);
+        .section-bg {
+            background: linear-gradient(135deg, #151515 0%, #0d0d0d 100%);
         }
         
-        .neon-text {
-            text-shadow: 0 0 5px #ff1e1e, 0 0 10px #ff1e1e, 0 0 15px #ff1e1e;
+        .terminal-bg {
+            background: linear-gradient(135deg, #0d0d0d 0%, #151515 100%);
         }
         
+        /* Enhanced Cards with Depth */
         .cyberpunk-card {
-            background: rgba(17, 17, 17, 0.9);
-            border: 2px solid #ff1e1e;
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
+            border: 1px solid rgba(255, 30, 30, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 4px 16px rgba(255, 30, 30, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
         }
         
         .cyberpunk-card:hover {
-            box-shadow: 0 0 30px rgba(255, 30, 30, 0.5);
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
+            transform: translateY(-8px);
+            box-shadow: 
+                0 16px 48px rgba(0, 0, 0, 0.5),
+                0 8px 24px rgba(255, 30, 30, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         
-        .cyberpunk-btn {
-            background: transparent;
-            border: 2px solid #ff1e1e;
+        /* Sleek Text Highlights Instead of Glow */
+        .sleek-text {
+            position: relative;
             color: #ff1e1e;
-            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+        
+        .sleek-text::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff1e1e 0%, #ff4b2b 100%);
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(255, 30, 30, 0.3);
+        }
+        
+        /* Enhanced Buttons with Depth */
+        .cyberpunk-btn {
+            background: linear-gradient(135deg, rgba(255, 30, 30, 0.1) 0%, rgba(255, 75, 43, 0.1) 100%);
+            border: 1px solid rgba(255, 30, 30, 0.4);
+            color: #ff1e1e;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyberpunk-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 30, 30, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cyberpunk-btn:hover::before {
+            left: 100%;
         }
         
         .cyberpunk-btn:hover {
-            background: linear-gradient(45deg, #ff1e1e, #ff4b2b);
-            color: #111111;
-            box-shadow: 0 0 20px rgba(255, 30, 30, 0.5);
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, rgba(255, 30, 30, 0.2) 0%, rgba(255, 75, 43, 0.2) 100%);
+            border-color: rgba(255, 30, 30, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 8px 25px rgba(255, 30, 30, 0.2),
+                0 4px 12px rgba(0, 0, 0, 0.3);
         }
         
+        /* Enhanced Navbar */
         .cyberpunk-nav {
-            background: rgba(17, 17, 17, 0.95);
-            border-bottom: 2px solid #ff1e1e;
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%);
+            border-bottom: 1px solid rgba(255, 30, 30, 0.3);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
         
-        .text-gradient {
-            background: linear-gradient(135deg, #ff1e1e 0%, #ff4b2b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Animated background */
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .animated-bg {
-            background: linear-gradient(-45deg, #111111, #1a0000, #ff1e1e, #ff4b2b);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-        }
-        
-        /* Starfield background */
+        /* Enhanced Starfield */
         .starfield {
             background: #000;
             position: relative;
@@ -124,14 +155,15 @@
             right: 0;
             bottom: 0;
             background-image: 
-                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
-                radial-gradient(2px 2px at 40px 70px, rgba(255,30,30,0.8), transparent),
-                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-                radial-gradient(1px 1px at 130px 80px, rgba(255,30,30,0.6), transparent),
-                radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,30,30,0.3), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,30,30,0.2), transparent),
+                radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.2), transparent);
             background-repeat: repeat;
             background-size: 200px 100px;
             animation: sparkle 20s linear infinite;
+            filter: blur(0.5px);
         }
         
         @keyframes sparkle {
@@ -139,65 +171,85 @@
             100% { transform: translateY(-100px); }
         }
         
-        /* Terminal styling */
+        /* Enhanced Terminal */
         .cyberpunk-terminal {
-            background: #000;
-            border: 2px solid #ff1e1e;
-            box-shadow: 0 0 20px rgba(255, 30, 30, 0.3);
+            background: linear-gradient(135deg, #000 0%, #111 100%);
+            border: 1px solid rgba(255, 30, 30, 0.4);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                0 4px 16px rgba(255, 30, 30, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
         
         .cyberpunk-terminal-header {
-            background: #111111;
-            border-bottom: 2px solid #ff1e1e;
+            background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+            border-bottom: 1px solid rgba(255, 30, 30, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
         
         .terminal-text {
             color: #00ff00;
-            text-shadow: 0 0 5px #00ff00;
+            text-shadow: 0 1px 2px rgba(0, 255, 0, 0.3);
         }
         
-        .terminal-input {
-            background: transparent;
-            border: none;
-            color: #00ff00;
-            font-family: 'Share Tech Mono', monospace;
-        }
-        
-        .terminal-input:focus {
-            outline: none;
-        }
-        
-        /* Glitch effect */
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
-        }
-        
-        .glitch-text {
-            animation: glitch 0.3s infinite;
-        }
-        
-        /* Particle effect */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .floating-particle {
-            position: absolute;
-            width: 4px;
+        /* Section Dividers */
+        .section-divider {
             height: 4px;
-            background: #ff1e1e;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            background: linear-gradient(90deg, transparent, #ff1e1e, transparent);
+            margin: 0 auto;
+            width: 80%;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(255, 30, 30, 0.3);
         }
         
-        /* Navbar animation */
+        /* Enhanced Skill Cards */
+        .skill-card {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.9) 0%, rgba(10, 10, 10, 0.9) 100%);
+            border: 1px solid rgba(255, 30, 30, 0.2);
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.3),
+                0 2px 8px rgba(255, 30, 30, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 30, 30, 0.4);
+            box-shadow: 
+                0 12px 32px rgba(0, 0, 0, 0.4),
+                0 6px 16px rgba(255, 30, 30, 0.1);
+        }
+        
+        /* Enhanced Text Gradients */
+        .text-gradient {
+            background: linear-gradient(135deg, #ff1e1e 0%, #ff4b2b 50%, #ff1e1e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+        }
+        
+        /* Smooth Name Gradient */
+        .name-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #ff1e1e 25%, #ffffff 50%, #ff1e1e 75%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 100%;
+            animation: nameFlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes nameFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Smooth Animations */
+        .smooth-transition {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Enhanced Hover Effects */
         .nav-link {
             position: relative;
             transition: all 0.3s ease;
@@ -210,12 +262,46 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #ff1e1e;
+            background: linear-gradient(90deg, #ff1e1e, #ff4b2b);
             transition: width 0.3s ease;
+            border-radius: 1px;
         }
         
         .nav-link:hover::after {
             width: 100%;
+        }
+        
+        /* Enhanced Terminal Helper */
+        .terminal-helper {
+            background: linear-gradient(135deg, rgba(255, 30, 30, 0.1) 0%, rgba(255, 75, 43, 0.1) 100%);
+            border: 1px solid rgba(255, 30, 30, 0.3);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Terminal Input Styling */
+        .terminal-input {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #00ff00;
+            font-family: 'Share Tech Mono', monospace;
+            padding: 0.5rem;
+            border-radius: 3px;
+            width: 100%;
+        }
+        
+        .terminal-input:focus {
+            outline: none;
+            border-color: #00ff00;
+            box-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+        }
+        
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0.9);
+            }
         }
     </style>
 </head>
@@ -238,12 +324,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <span class="text-2xl font-logo neon-text">ATB</span>
+                    <span class="text-2xl font-logo text-red-500">ATB</span>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="nav-link text-red-500 font-semibold neon-text font-heading uppercase">HOME</a>
+                    <a href="index.html" class="nav-link text-red-500 font-semibold font-heading uppercase">HOME</a>
                     <a href="projects.html" class="nav-link text-gray-300 hover:text-red-500 transition-colors font-heading uppercase">PROJECTS</a>
                     <a href="contact.html" class="nav-link text-gray-300 hover:text-red-500 transition-colors font-heading uppercase">CONTACT</a>
                 </div>
@@ -259,7 +345,7 @@
             <!-- Mobile Menu -->
             <div x-show="isOpen" x-transition class="md:hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="index.html" class="block px-3 py-2 text-red-500 font-semibold neon-text font-heading uppercase">HOME</a>
+                    <a href="index.html" class="block px-3 py-2 text-red-500 font-semibold font-heading uppercase">HOME</a>
                     <a href="projects.html" class="block px-3 py-2 text-gray-300 hover:text-red-500 font-heading uppercase">PROJECTS</a>
                     <a href="contact.html" class="block px-3 py-2 text-gray-300 hover:text-red-500 font-heading uppercase">CONTACT</a>
                 </div>
@@ -268,18 +354,17 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 starfield">
+    <section class="pt-32 pb-20 hero-bg starfield">
         <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
             <div data-aos="fade-up" data-aos-duration="1000">
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 font-heading">
-                    <span class="neon-text glitch-text">Aitsam Tariq Bajwa</span>
+                    <span class="name-gradient">Aitsam Tariq Bajwa</span>
                 </h1>
-                <p class="text-2xl md:text-3xl text-gray-200 mb-8 font-exo">
+                <p class="text-2xl md:text-3xl text-red-500 mb-8 font-exo">
                     CyberSecurity & Full Stack Developer
                 </p>
                 <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-12 font-body">
-                    Cybersecurity, Web Development, and DevOps enthusiast with hands-on experience in digital forensics,
-                    cloud technologies, and building secure, scalable web applications.
+                    I'm a BS Cyber Security graduate from FAST National University with expertise in blockchain, DevOps, cloud computing, and SIEM Solutions.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="projects.html" class="cyberpunk-btn px-8 py-3 rounded-lg font-semibold">
@@ -293,17 +378,22 @@
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- About Section -->
-    <section class="py-20 bg-black">
+    <section class="py-20 section-bg">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-right" data-aos-duration="1000">
-                    <h2 class="text-4xl font-bold mb-8 neon-text font-heading uppercase">ABOUT ME</h2>
+                    <h2 class="text-4xl font-bold mb-8 font-heading uppercase">
+                        <span class="sleek-text">ABOUT ME</span>
+                    </h2>
                     <div class="space-y-6 text-lg text-gray-300 font-body">
                         <p>
-                            I'm a BS Cyber Security student at FAST National University with expertise in blockchain, 
-                            artificial intelligence, cloud computing, and SIEM Solutions. My passion lies in building 
-                            secure, scalable applications and exploring cutting-edge technologies.
+                            I'm a BS Cyber Security graduate from FAST National University with expertise in blockchain, 
+                            DevOps, cloud computing, and SIEM Solutions. My passion lies in building 
+                            secure, web applications and exploring emerging technologies.
                         </p>
                         <p>
                             Currently working as a DevOps Intern at Invone, I manage cloud instances and deploy 
@@ -312,15 +402,16 @@
                         </p>
                         <p>
                             I hold Microsoft Azure Fundamentals certification and have completed ethical hacking 
-                            workshops. My focus is on creating innovative solutions that bridge traditional web 
-                            development with the decentralized future.
+                            workshops. My focus is on creating innovative solutions with smooth pipelines.
                         </p>
                     </div>
                 </div>
                 
                 <div data-aos="fade-left" data-aos-duration="1000">
                     <div class="cyberpunk-card rounded-2xl p-8">
-                        <h3 class="text-2xl font-bold mb-6 neon-text font-heading uppercase">EDUCATION & EXPERIENCE</h3>
+                        <h3 class="text-2xl font-bold mb-6 font-heading uppercase">
+                            <span class="sleek-text">EDUCATION & EXPERIENCE</span>
+                        </h3>
                         <div class="space-y-4">
                             <div class="border-l-4 border-red-500 pl-4">
                                 <div class="font-semibold text-red-500 font-exo">BS Cyber Security</div>
@@ -340,18 +431,20 @@
                         </div>
                         
                         <div class="mt-8 pt-6 border-t border-red-500">
-                            <h4 class="text-lg font-semibold mb-4 text-red-500 font-heading uppercase">CONNECT WITH ME</h4>
+                            <h4 class="text-lg font-semibold mb-4 font-heading uppercase">
+                                <span class="sleek-text">CONNECT WITH ME</span>
+                            </h4>
                             <div class="flex space-x-4">
                                 <a href="https://github.com/atbsniper" target="_blank"
-                                   class="w-10 h-10 bg-gray-700 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors cyberpunk-glow">
+                                   class="w-10 h-10 bg-gray-700 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors">
                                     <i data-lucide="github" class="w-5 h-5"></i>
                                 </a>
                                 <a href="https://www.linkedin.com/in/aitsam-tariq-bajwa/" target="_blank"
-                                   class="w-10 h-10 bg-blue-600 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors cyberpunk-glow">
+                                   class="w-10 h-10 bg-blue-600 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors">
                                     <i data-lucide="linkedin" class="w-5 h-5"></i>
                                 </a>
                                 <a href="https://instagram.com/atbsniper" target="_blank"
-                                   class="w-10 h-10 bg-pink-600 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors cyberpunk-glow">
+                                   class="w-10 h-10 bg-pink-600 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors">
                                     <i data-lucide="instagram" class="w-5 h-5"></i>
                                 </a>
                             </div>
@@ -362,55 +455,73 @@
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- Tech Stack Section -->
     <section class="py-20 bg-black">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 neon-text font-heading uppercase">TECH STACK</h2>
+                <h2 class="text-4xl font-bold mb-4 font-heading uppercase">
+                    <span class="sleek-text">TECH STACK</span>
+                </h2>
                 <p class="text-xl text-gray-300 font-body">Technologies I work with</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 cyberpunk-glow">
-                        <i data-lucide="shield" class="w-10 h-10"></i>
+                    <div class="skill-card w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="shield" class="w-10 h-10 text-red-500"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-red-500 font-heading uppercase">Cybersecurity</h3>
+                    <h3 class="text-xl font-semibold mb-2 font-heading uppercase">
+                        <span class="sleek-text">Cybersecurity</span>
+                    </h3>
                     <p class="text-gray-400 font-body text-sm">Vulnerability Assessment, Reverse Engineering, Malware Analysis, Digital Forensics</p>
                 </div>
                 
                 <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 cyberpunk-glow">
-                        <i data-lucide="link" class="w-10 h-10"></i>
+                    <div class="skill-card w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="link" class="w-10 h-10 text-red-500"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-red-500 font-heading uppercase">Web3 & Blockchain</h3>
+                    <h3 class="text-xl font-semibold mb-2 font-heading uppercase">
+                        <span class="sleek-text">Web3 & Blockchain</span>
+                    </h3>
                     <p class="text-gray-400 font-body text-sm">Solidity, Smart Contracts, Ethereum, Web3.js, Base Testnet</p>
                 </div>
                 
                 <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 cyberpunk-glow">
-                        <i data-lucide="code" class="w-10 h-10"></i>
+                    <div class="skill-card w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="code" class="w-10 h-10 text-red-500"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-red-500 font-heading uppercase">Full-Stack Development</h3>
+                    <h3 class="text-xl font-semibold mb-2 font-heading uppercase">
+                        <span class="sleek-text">Full-Stack Development</span>
+                    </h3>
                     <p class="text-gray-400 font-body text-sm">React, Next.js, Node.js, Python, JavaScript, PostgreSQL</p>
                 </div>
                 
                 <div class="text-center" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 cyberpunk-glow">
-                        <i data-lucide="server" class="w-10 h-10"></i>
+                    <div class="skill-card w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="server" class="w-10 h-10 text-red-500"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-red-500 font-heading uppercase">Cloud & DevOps</h3>
+                    <h3 class="text-xl font-semibold mb-2 font-heading uppercase">
+                        <span class="sleek-text">Cloud & DevOps</span>
+                    </h3>
                     <p class="text-gray-400 font-body text-sm">AWS, Microsoft Azure, Docker, Vercel, GitHub, Linux</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
     <!-- Interactive Terminal Section -->
-    <section class="py-20 bg-black">
+    <section class="py-20 terminal-bg">
         <div class="max-w-4xl mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4 neon-text font-heading uppercase">INTERACTIVE TERMINAL</h2>
+                <h2 class="text-4xl font-bold mb-4 font-heading uppercase">
+                    <span class="sleek-text">INTERACTIVE TERMINAL</span>
+                </h2>
                 <p class="text-xl text-gray-300 font-body">Experience the power of command line magic! 🖥️</p>
             </div>
             
@@ -467,7 +578,10 @@
 
     <script>
         // Initialize AOS
-        AOS.init();
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic'
+        });
         
         // Initialize Lucide icons
         lucide.createIcons();
@@ -585,6 +699,18 @@
                             
                         case 'exit':
                             output = '<div class="text-red-400">Terminal session ended. Thanks for visiting!</div>';
+                            break;
+                            
+                        case 'rm -rf':
+                        case 'rm -rf -r':
+                            output = '<div class="text-red-400">💥 BOOM! You just deleted the terminal! 💥</div>';
+                            // Hide the terminal after a delay
+                            setTimeout(() => {
+                                const terminal = document.querySelector('.cyberpunk-terminal');
+                                if (terminal) {
+                                    terminal.style.animation = 'fadeOut 0.5s ease-out forwards';
+                                }
+                            }, 2000);
                             break;
                             
                         default:
