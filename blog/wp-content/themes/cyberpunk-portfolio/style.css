@@ -1,0 +1,423 @@
+/*
+Theme Name: Cyberpunk Portfolio
+Description: A custom cyberpunk-themed WordPress theme that matches the main portfolio website design
+Version: 1.0
+Author: Aitsam Tariq Bajwa
+*/
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Audiowide&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Major+Mono+Display&display=swap');
+
+/* Font Assignments */
+.font-heading { font-family: 'Orbitron', sans-serif !important; }
+.font-logo { font-family: 'Audiowide', cursive !important; }
+.font-body { font-family: 'Rajdhani', sans-serif !important; }
+.font-exo { font-family: 'Exo 2', sans-serif !important; }
+.font-fira { font-family: 'Fira Code', monospace !important; }
+.font-terminal { font-family: 'Share Tech Mono', monospace !important; }
+.font-major { font-family: 'Major Mono Display', monospace !important; }
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Rajdhani', sans-serif !important;
+    background: #000 !important;
+    color: #cccccc !important;
+    line-height: 1.6;
+}
+
+/* Override WordPress default styles */
+body {
+    background: #000 !important;
+    color: #cccccc !important;
+}
+
+/* Enhanced Cyberpunk Theme with Depth */
+.hero-bg {
+    background: linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%) !important;
+    position: relative;
+}
+
+.section-bg {
+    background: linear-gradient(135deg, #151515 0%, #0d0d0d 100%) !important;
+}
+
+.terminal-bg {
+    background: linear-gradient(135deg, #0d0d0d 0%, #151515 100%) !important;
+}
+
+/* Enhanced Cards with Depth */
+.cyberpunk-card {
+    background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%) !important;
+    border: 1px solid rgba(255, 30, 30, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(255, 30, 30, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 12px !important;
+    padding: 2rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.cyberpunk-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(255, 30, 30, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Sleek Text Highlights */
+.sleek-text {
+    position: relative;
+    color: #ff1e1e !important;
+    font-weight: 700;
+}
+
+.sleek-text::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ff1e1e 0%, #ff4b2b 100%);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(255, 30, 30, 0.3);
+}
+
+/* Enhanced Buttons */
+.cyberpunk-btn {
+    background: linear-gradient(135deg, rgba(255, 30, 30, 0.1) 0%, rgba(255, 75, 43, 0.1) 100%) !important;
+    border: 1px solid rgba(255, 30, 30, 0.4) !important;
+    color: #ff1e1e !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-family: 'Orbitron', sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none !important;
+    display: inline-block;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+}
+
+.cyberpunk-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 30, 30, 0.2) 0%, rgba(255, 75, 43, 0.2) 100%) !important;
+    border-color: rgba(255, 30, 30, 0.6) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 30, 30, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    color: #ff1e1e !important;
+    text-decoration: none !important;
+}
+
+/* Enhanced Navbar */
+.cyberpunk-nav {
+    background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%) !important;
+    border-bottom: 1px solid rgba(255, 30, 30, 0.3) !important;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Navigation Links */
+.nav-link {
+    color: #cccccc !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease;
+    font-family: 'Orbitron', sans-serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+}
+
+.nav-link:hover {
+    color: #ff1e1e !important;
+    text-decoration: none !important;
+}
+
+.nav-link.active {
+    color: #ff1e1e !important;
+}
+
+/* Section Dividers */
+.section-divider {
+    height: 4px !important;
+    background: linear-gradient(90deg, transparent, #ff1e1e, transparent) !important;
+    margin: 0 auto !important;
+    width: 80% !important;
+}
+
+/* Blog Post Styles */
+.blog-post {
+    background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%) !important;
+    border: 1px solid rgba(255, 30, 30, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 2rem !important;
+    margin-bottom: 2rem !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.blog-post:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 6px 20px rgba(255, 30, 30, 0.1) !important;
+}
+
+.blog-post h2 {
+    color: #ff1e1e !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 1.8rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.blog-post h2 a {
+    color: #ff1e1e !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease;
+}
+
+.blog-post h2 a:hover {
+    color: #ff4b2b !important;
+    text-decoration: none !important;
+}
+
+.blog-post .post-meta {
+    color: #888 !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 1rem !important;
+    font-family: 'Fira Code', monospace !important;
+}
+
+.blog-post .post-excerpt {
+    color: #cccccc !important;
+    line-height: 1.7 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.blog-post .read-more {
+    color: #ff1e1e !important;
+    text-decoration: none !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    font-size: 0.9rem !important;
+    transition: color 0.3s ease;
+}
+
+.blog-post .read-more:hover {
+    color: #ff4b2b !important;
+    text-decoration: none !important;
+}
+
+/* Single Post Styles */
+.single-post {
+    background: linear-gradient(135deg, rgba(17, 17, 17, 0.95) 0%, rgba(10, 10, 10, 0.95) 100%) !important;
+    border: 1px solid rgba(255, 30, 30, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 3rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.single-post h1 {
+    color: #ff1e1e !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-size: 2.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.single-post .post-content {
+    color: #cccccc !important;
+    line-height: 1.8 !important;
+    font-size: 1.1rem !important;
+}
+
+.single-post .post-content h2,
+.single-post .post-content h3,
+.single-post .post-content h4 {
+    color: #ff1e1e !important;
+    font-family: 'Orbitron', sans-serif !important;
+    margin: 2rem 0 1rem 0 !important;
+}
+
+.single-post .post-content p {
+    margin-bottom: 1.5rem !important;
+}
+
+.single-post .post-content a {
+    color: #ff1e1e !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(255, 30, 30, 0.3);
+    transition: all 0.3s ease;
+}
+
+.single-post .post-content a:hover {
+    color: #ff4b2b !important;
+    border-bottom-color: #ff4b2b;
+}
+
+/* Pagination */
+.pagination {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+    margin: 3rem 0 !important;
+}
+
+.pagination a,
+.pagination span {
+    padding: 0.75rem 1rem !important;
+    background: linear-gradient(135deg, rgba(255, 30, 30, 0.1) 0%, rgba(255, 75, 43, 0.1) 100%) !important;
+    border: 1px solid rgba(255, 30, 30, 0.4) !important;
+    color: #ff1e1e !important;
+    text-decoration: none !important;
+    border-radius: 6px !important;
+    font-family: 'Orbitron', sans-serif !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    background: linear-gradient(135deg, rgba(255, 30, 30, 0.2) 0%, rgba(255, 75, 43, 0.2) 100%) !important;
+    border-color: rgba(255, 30, 30, 0.6) !important;
+    transform: translateY(-2px);
+}
+
+.pagination .current {
+    background: linear-gradient(135deg, rgba(255, 30, 30, 0.3) 0%, rgba(255, 75, 43, 0.3) 100%) !important;
+    border-color: rgba(255, 30, 30, 0.6) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blog-post {
+        padding: 1.5rem !important;
+    }
+    
+    .single-post {
+        padding: 2rem !important;
+    }
+    
+    .single-post h1 {
+        font-size: 2rem !important;
+    }
+    
+    .pagination {
+        flex-wrap: wrap !important;
+    }
+}
+
+/* WordPress Admin Bar */
+#wpadminbar {
+    background: linear-gradient(135deg, #111 0%, #1a1a1a 100%) !important;
+    border-bottom: 1px solid rgba(255, 30, 30, 0.3) !important;
+}
+
+#wpadminbar .ab-item {
+    color: #cccccc !important;
+}
+
+#wpadminbar .ab-item:hover {
+    color: #ff1e1e !important;
+}
+
+/* Force override WordPress defaults */
+article {
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+main {
+    background: #000 !important;
+    color: #cccccc !important;
+}
+
+/* Ensure proper spacing between blog posts */
+.blog-post + .blog-post {
+    margin-top: 2rem !important;
+}
+
+/* Fix any white backgrounds */
+body, html {
+    background: #000 !important;
+}
+
+/* Ensure text colors are correct */
+p, div, span {
+    color: #cccccc !important;
+}
+
+/* Fix links */
+a {
+    color: #ff1e1e !important;
+}
+
+a:hover {
+    color: #ff4b2b !important;
+}
+
+/* Override WordPress block editor styles */
+.wp-block-post-template {
+    background: transparent !important;
+}
+
+.wp-block-post {
+    background: transparent !important;
+}
+
+.wp-block-post-title {
+    color: #ff1e1e !important;
+}
+
+.wp-block-post-excerpt {
+    color: #cccccc !important;
+}
+
+.wp-block-post-date {
+    color: #888 !important;
+}
+
+/* Override any white backgrounds from WordPress */
+.has-white-background-color {
+    background-color: #000 !important;
+}
+
+.has-white-color {
+    color: #cccccc !important;
+}
+
+/* Ensure the main content area has dark background */
+.wp-block-group {
+    background: transparent !important;
+}
+
+.wp-block-columns {
+    background: transparent !important;
+}
+
+.wp-block-column {
+    background: transparent !important;
+}
+
+/* Override any default WordPress article styles */
+article.post {
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure the grid container has proper styling */
+.grid {
+    background: transparent !important;
+}
+
+/* Override any WordPress default text colors */
+.wp-block-post-title a {
+    color: #ff1e1e !important;
+}
+
+.wp-block-post-excerpt p {
+    color: #cccccc !important;
+}
