@@ -82,27 +82,7 @@ sudo ./setup_lemp.sh
 └── setup_lemp.sh      # Automated setup script
 ```
 
-## 🔧 Configuration
 
-### Update Contact Information
-Edit `index.html` and update:
-- GitHub username
-- LinkedIn profile
-- Email address
-- Project links
-
-### Database Configuration
-Default database settings:
-- Database: `portfolio_db`
-- User: `portfolio_user`
-- Password: `portfolio_pass_2024`
-
-### Admin Panel
-- URL: `http://your-domain.com/admin.php`
-- Username: `admin`
-- Password: `admin123`
-
-**⚠️ Change the admin password in production!**
 
 ## 🎯 Use Cases
 
@@ -140,51 +120,9 @@ Default database settings:
 - Disabled dangerous PHP functions
 - Open_basedir restrictions
 
-## 📊 Memory Optimization
 
-### PHP Settings
-- Memory limit: 64MB
-- Max execution time: 30 seconds
-- OPcache enabled with 32MB memory
-- Limited file upload sizes
 
-### MySQL Settings
-- InnoDB buffer pool: 64MB
-- Query cache: 8MB
-- Max connections: 50
-- Optimized for low memory usage
-
-### Nginx Settings
-- Worker processes: auto
-- Worker connections: 512
-- Gzip compression enabled
-- Static file caching
-
-## 🚨 Troubleshooting
-
-### Check Services
-```bash
-sudo systemctl status nginx
-sudo systemctl status mysql
-sudo systemctl status php*-fpm
-```
-
-### Check Logs
-```bash
-sudo tail -f /var/log/nginx/error.log
-sudo tail -f /var/log/mysql/error.log
-sudo tail -f /var/log/php-fpm/www-error.log
-```
-
-### Test Database Connection
-```bash
-mysql -u portfolio_user -p portfolio_db
-```
-
-### Monitor Memory Usage
-Visit: `http://your-domain.com/monitor.php`
-
-## 📈 Performance Tips
+## 📈 Performance
 
 1. **Enable OPcache**: Already configured in PHP-FPM
 2. **Use CDN**: For static assets (images, CSS, JS)
