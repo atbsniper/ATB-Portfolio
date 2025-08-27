@@ -11,6 +11,17 @@ jobs:
     - name: Clone repo first
       uses: actions/checkout@v5.0.0
 
+    - name: Removing files in server
+      uses: /appleboy/ssh-action@v1.2.2
+      with: 
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          echo: "Removing files.."
+          sudo rm -rf /var/www/html/*
+          
+
     - name: Copy and Paste repo on server
       uses: appleboy/scp-action@v1.0.0
       with: 
