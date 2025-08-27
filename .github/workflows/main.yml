@@ -22,7 +22,7 @@ jobs:
         target: "/var/www/html"
 
     - name: Restart nginx
-      uses: /appleboy/ssh-action@1.2.2
+      uses: /appleboy/ssh-action@v1.2.2
       with: 
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
