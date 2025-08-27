@@ -9,10 +9,10 @@ jobs:
   
     steps:
     - name: Clone repo first
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5.0.0
 
     - name: Copy and Paste repo on server
-      uses: appleboy/scp-action@v0.1.4
+      uses: appleboy/scp-action@v1.0.0
       with: 
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
@@ -22,7 +22,7 @@ jobs:
         target: "/var/www/html"
 
     - name: Restart nginx
-      uses: /appleboy/ssh-action@0.1.10
+      uses: /appleboy/ssh-action@1.2.2
       with: 
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USER }}
