@@ -1,39 +1,38 @@
-name: Deploy to Ec2
-on: 
+name: Deploy to EC2 (Temp Folder Strategy)
+
+on:
   push:
     branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-  
+
     steps:
-    - name: Clone repo first
-      uses: actions/checkout@v5.0.0
+      - name: Clone the repository
+        uses: actions/checkout@v5
 
-    - name: Removing files in server
-      uses: /appleboy/ssh-action@v1.2.2
-      with: 
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USER }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          echo: "Removing files.."
-          sudo rm -rf /var/www/html/*
-          
+      - name: Upload code to EC2 (to temp folder)
+        uses: appleboy/scp-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "."
+          target: "/var/www/html-temp"
 
-    - name: Copy and Paste repo on server
-      uses: /appleboy/scp-action@v1.0.0
-      with: 
-        source: "."
-        target: "/var/www/html"
+      - name: Swap temp folder into place and restart nginx
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            echo "Removing old site..."
+            sudo rm -rf /var/www/html
 
-    - name: Restart nginx
-      uses: /appleboy/ssh-action@v1.2.2
-      with: 
-        script: |
-          echo: "Restarting server.."
-          sudo systemctl restart nginx
-          
+            echo "Renaming temp folder..."
+            sudo mv /var/www/html-temp /var/www/html
 
-    
+            echo "Restarting nginx..."
+            sudo systemctl restart nginx
