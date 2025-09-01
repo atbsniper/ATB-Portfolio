@@ -1,4 +1,4 @@
-name: Deploy to EC2 (Temp Folder Strategy)
+name: Deploy with Self-Hosted Runner
 
 on:
   push:
@@ -6,44 +6,12 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-
+    runs-on: self-hosted
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v5
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Giving permission to the user
-        uses: appleboy/ssh-action@v1.2.2
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            echo "Preparing target directory..."
-            sudo mkdir -p /var/www/html-temp
-            sudo chown -R $USER:$USER /var/www/html-temp
-
-      - name: Upload code to EC2 (to temp folder)
-        uses: appleboy/scp-action@v1.0.0
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          source: "."
-          target: "/var/www/html-temp"
-
-      - name: Swap temp folder into place and restart nginx
-        uses: appleboy/ssh-action@v1.2.2
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            echo "Removing old site..."
-            sudo rm -rf /var/www/html
-
-            echo "Renaming temp folder..."
-            sudo mv /var/www/html-temp /var/www/html
-
-            echo "Restarting nginx..."
-            sudo systemctl restart nginx    
+      - name: Install dependencies & restart server
+        run: |
+          git pull origin main
+          sudo systemctl restart nginx
