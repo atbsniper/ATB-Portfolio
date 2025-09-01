@@ -46,4 +46,4 @@ jobs:
             sudo mv /var/www/html-temp /var/www/html
 
             echo "Restarting nginx..."
-            sudo systemctl restart nginx
+            sudo systemctl restart nginx    
