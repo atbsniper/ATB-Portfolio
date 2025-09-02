@@ -7,11 +7,12 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install dependencies & restart server
+      - name: Deploy to /var/www/html and restart Nginx
         run: |
-          git pull origin main
+          sudo rsync -av --delete $GITHUB_WORKSPACE/ /var/www/html/
           sudo systemctl restart nginx
