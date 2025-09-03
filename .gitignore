@@ -26,6 +26,7 @@ composer.lock
 .env
 .env.*
 .env.local
+config.php
 
 # Misc
 *.bak
