@@ -26,7 +26,6 @@ composer.lock
 .env
 .env.*
 .env.local
-chatbot.php
 
 # Misc
 *.bak
