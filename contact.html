@@ -642,16 +642,19 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // Chatbot functionality
-        function chatbot() {
-            return {
-                message: '',
-                isTyping: false,
+        // Chatbot functionality - ensure it's available globally
+        if (typeof window.chatbot === 'undefined') {
+            window.chatbot = function() {
+                return {
+                    message: '',
+                    isTyping: false,
                 
                 sendMessage() {
+                    console.log('sendMessage called'); // Debug log
                     if (!this.message.trim() || this.isTyping) return;
                     
                     const userMessage = this.message.trim();
+                    console.log('User message:', userMessage); // Debug log
                     this.addMessage('You', userMessage, 'user');
                     this.message = '';
                     this.isTyping = true;
@@ -659,30 +662,58 @@
                     // Show typing indicator
                     this.showTypingIndicator();
                     
-                    // Send to backend
-                    fetch('/chatbot.php', {
+                    // Send to backend with fallback: try same-origin first, then main domain
+                    const sameOriginUrl = '/chatbot.php';
+                    const mainDomainUrl = 'https://aitsam.invo.zone/chatbot.php';
+
+                    const postBody = JSON.stringify({ message: userMessage });
+                    const requestInit = {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ message: userMessage })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
+                        headers: { 'Content-Type': 'application/json' },
+                        body: postBody
+                    };
+
+                    const parseJsonSafe = async (response) => {
+                        const text = await response.text();
+                        try { return JSON.parse(text); } catch (_) {
+                            throw new Error('Invalid JSON from server');
+                        }
+                    };
+
+                    const handleSuccess = (data) => {
                         this.hideTypingIndicator();
                         this.isTyping = false;
-                        if (data.success) {
+                        if (data && data.success) {
                             this.typeMessage('Court Jester', data.response, 'bot');
                         } else {
                             this.addMessage('Court Jester', 'Sorry, I seem to be having technical difficulties. Please try again later.', 'bot');
                         }
-                    })
-                    .catch(error => {
+                    };
+
+                    const handleFailure = (error) => {
                         this.hideTypingIndicator();
                         this.isTyping = false;
-                        console.error('Error:', error);
+                        console.error('Chatbot error:', error);
                         this.addMessage('Court Jester', 'Connection error. Please check your internet connection.', 'bot');
-                    });
+                    };
+
+                    // Try same-origin first
+                    fetch(sameOriginUrl, requestInit)
+                        .then(async (res) => {
+                            if (!res.ok) throw new Error('HTTP ' + res.status);
+                            const data = await parseJsonSafe(res);
+                            handleSuccess(data);
+                        })
+                        .catch(() => {
+                            // Fallback to main domain
+                            fetch(mainDomainUrl, requestInit)
+                                .then(async (res) => {
+                                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                                    const data = await parseJsonSafe(res);
+                                    handleSuccess(data);
+                                })
+                                .catch(handleFailure);
+                        });
                 },
                 
                 showTypingIndicator() {
@@ -780,6 +811,7 @@
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }
             }
+        }
         }
 
         // Contact form functionality
