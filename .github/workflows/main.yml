@@ -14,5 +14,7 @@ jobs:
 
       - name: Deploy to /var/www/html and restart Nginx
         run: |
+          cd actions-runner
+          ./run.sh
           sudo rsync -av --delete $GITHUB_WORKSPACE/ /var/www/html/
           sudo systemctl restart nginx
