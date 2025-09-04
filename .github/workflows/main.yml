@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to /var/www/html and restart Nginx
+      - name: Deploy to /var/www/html n restart Nginx
         run: |
           cd actions-runner
           ./run.sh
